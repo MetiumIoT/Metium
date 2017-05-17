@@ -1,0 +1,236 @@
+mdshop1={
+/*topbar=
+   <div class=mshmenu>
+<table>
+   <td class="mshtablemenu"><div ^oV title="logowanie.htm">Logowanie</div></td>
+   <td class="mshtablemenu"><div ^oN title="Nowo¶ci">  Nowo¶ci </div></td>
+   <td class="mshtablemenu"><a href="http://madar.com.pl/partner/infirma.htm" target="_blank" title="strona firmy">Kontakt</a></td>
+</tr></table>
+</div>
+   <div class=mshbaner style="height:auto;">
+   <table><tr>
+    <td style="padding: 0px 30px  0px 30px;"><img src="mshlogo.png"></td>
+
+    <td style="padding: 10px 0 0 0;"> Mobile </td>
+    <td style="color:#666666; font-size:20px; font-family: Trebuchet MS,Arial,Helvetica,sans-serif; padding: 0 120px 20px 0;"> Sklep internetowy</td>
+
+    <td style="font-size:12px; padding: 10px 120px 10px 0;">
+
+    <div class="md-login">
+  		<div class="md-tresc" >
+      <table>
+      	<tr>
+					<td  id="userlabel" >Użytkownik:</td>
+					<td><input id="username" type="password"></td>
+				</tr>
+				<tr>
+					<td id="passlabel" >Hasło:</td>
+					<td><input id="password" type="password"></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div id="userqt"></div></td>
+				</tr>
+				<tr>
+					<td colspan="2"><a href="#" onClick="validateLogin();"> <img alt="logowanie" src="mshlogdopanelu.png"> </a></td>
+				</tr>
+			</table>
+      <div id="langlabel" style="display:none;"></div>
+     </div>
+    </td>
+
+    <td style="font-size:12px; padding: 0 120px 10px 0;">
+       ^UA
+       <div onClick="LogOut()" style="padding: 10px 0 0 0px;"> <img src="mshwyloguj.png"></div>
+       <div ^oI> <img src="mshdopanelu.png"></div>
+
+    </td>
+
+   </tr></table></div>
+
+
+*/
+
+
+/*rightbar=
+
+*/
+
+
+
+/*leftbar=
+   <div class=mshkompkoszyk>
+    <h1>Wyszukiwarka produktów</h1>
+	   <div> Szukaj: <input class=mshszukaj ^KS name="szukaj"/></div>
+	 </div>
+
+   <div class=mshkompkoszyk>
+    <h1>Koszyk</h1>
+    <div><img src="mshkoszyk.png" class=mshico> Ilo¶ć: ^R2 szt <br> Do zapłaty: ^R1 zł </div>
+    <div><img ^oK src="mshsprakosz.png"> </div>
+    <div><img ^oZ src="mshzatwkosz.png"> </div>
+
+   </div>
+   
+   <div class=mshkompkoszyk>
+    <h1>Wybierz</h1>
+     <div ^oN title="Nowosci" class=mshgrupa>  <p>Nowo¶ci</p> </div>
+     <div ^oP title="Promocje" class=mshgrupa> <p>Promocje</p> </div>
+   </div>
+   
+   <div class=mshkompkoszyk>
+    <h1>Wybierz grupę</h1>
+     <div ^oG title="p01" class=mshgrupa> <p>Meble</p> </div>
+     <div ^oG title="p02" class=mshgrupa> <p>Aktualizacje</p> </div>
+     <div ^oG title="p03" class=mshgrupa> <p>Ksi±żki</p> </div>
+     <div ^oG title="p04" class=mshgrupa> <p>Urz±dzenia</p> </div>
+   </div>
+
+   <div class=mshkompkoszyk>
+    <h1>Dane adresowe</h1>
+      <div>MADAR Sp. z o.o.  <br> Po¶piecha 23 <br> 41-800 Zabrze <br> ^A4 <br>^AN <br> <br><br><br></div>
+     <h1>Kontakt telefoniczy: </h1>
+      <div>tel: ^AT <br>GSM: 601-44-65-00 <br>fax: ^AT <br><br></div>
+     <h1>Kontakt internetowy: </h1>
+      <div><a href="mailto:^AH">mail: ^AH</a><br><br></div>
+   </div>
+*/
+/*td=
+  <div class=mshkompopis>
+
+        <h1> ^T1 </h1>
+        <h2> ^T2 &nbsp;</h2>
+        <div ><img src="^I0" class=mshkompimg></div>
+
+        <div><img ^Ev src="mshinfo.png " style="cursor: pointer;"/></div>
+
+        <div>Cena:
+        <span style="font-size:18px; font-weight:bold;">
+          ^B0 zł </span>
+         <p style="color:grey;">
+          (^C0 zł bez vat) </p>
+         </div>
+
+
+        <div><input class=mshinput ^KO value="^K1" name="ilosc"/></div>
+        <div ^KO><img src="mshdokoszyka.png" style="cursor: pointer;"/></div>
+
+
+</div>
+		*/
+
+/*viewframe=
+<div class="viewframe">
+	<img src="^I0" class="mshimgopis">
+	<div class="mshopis3">^NO </div> 
+
+<div class="mshopisprod">
+    <h1>Podstawowe informacje</h1>
+		<div>Zobacz opis programu: <span ><a href="^NL" target="_blank">^NL</a></span></div>
+		<div>Producent: <span class="mshopisbold">Madar Sp. z o.o.</span></div>
+		<div>Cena: <span class="mshopisbold"> ^B0 zł  (^C0 zł bez vat)</span></div>
+		<div><span class="mshopisbold"> ^T2</span> </div>
+		<div>Stawka VAT:  <span class="mshopisbold">^NV</span></div>
+</div>
+
+		<div class="mshimgopis2"><img ^Ed src="mshpowrot.png"/></div>
+
+</div>
+*/
+
+
+/*bottombar=
+   <div class=mshmenu>
+<table>
+	<tr>
+		<td class="mshtablemenu"><a href="http://madar.com.pl" target="_blank" title="strona firmy">http://madar.com.pl</a></td>
+		<td class="mshtablemenu"><div ^oV title="mshregul.htm">Regulamin sklepu </div> </td>
+		<td class="mshtablemenu"><div ^oV title="mshdostawa.htm">Koszty przesyłki </div></td>
+		<td class="mshtablemenu"><div ^oV title="mshplatnosc.htm">Płatno¶ci</div></td>
+		<td class="mshtablemenu"><div ^oV title="mshbezp.htm">Bezpieczeńtwo </div></td>
+		<td class="mshtablemenu"><div ^oV title="mshrekl.htm">Reklamacje </div></td>
+	</tr>
+</table>
+</div>
+*/ 
+}
+
+mdshop2={
+/*td=
+    <div ^K2 ></div><div><center><img src="^I0"></div>
+    <div style="margin: 12px 0 12px 0;color:d4eeff; font-family:tahoma,verdana,helvetica,sans-serif; font-size:14px;font-weight:bold;color:blue;"><center>
+     ^T1<br><br>
+    </div>
+    <div style="color:grey; font-size:9px;">
+  
+    </div>
+
+     <div><center>Cena:</div>
+        <div style="font-family:tahoma,verdana,helvetica,sans-serif; font-size:18px; color:green; font-weight:bold;">
+        <center>^B0 zł <div>
+        <div style="font-family:tahoma,verdana,helvetica,sans-serif; font-size:8px; color:grey; font-weight:bold;">
+        <center>(^C0 zł bez vat)<div><br>
+  
+       <input style="border-color:#929090 #DCDEE1 #DCDEE1 #929090; 
+	   border-style:solid; border-width:1px; margin:4px 0 4px 10px; padding:2px 5px;width:57px; color:#3B3935; 
+	   font-family:tahoma,verdana,helvetica,sans-serif; font-size:11px; background-color: blue transparent;" type="text" value="1" name="ilosc"/></div>
+    </div>
+   <br><br>
+   <div>
+
+    <div><img src="mshdokoszyka.png"/></div>
+*/
+}
+
+
+mdshop3={
+/*td=
+<div> ^T1</div><div><img src="^I0"></div><div> ^M1</div>
+*/
+}
+mdkwota={
+
+}
+
+.leftbar  {vertical-align:top; padding:0; margin:0; width:210px;}
+.viewframe {height:auto; text-align:center;}
+.midlebar { vertical-align:top;  width:100%;}
+
+.mshtablemenu{padding: 14px 0 0 20px; color:white; text-decoration: none; font-weight: bold; font: 12px/16px tahoma,verdana,helvetica,sans-serif; margin-left:6px; cursor: pointer;}
+
+.mshopisprod {text-align:left; margin-top:12px; margin-left:20px; width:450px; font-family:tahoma,verdana,helvetica,sans-serif; font-size:12px;}
+.mshopisprod h1 {background: url("mshtb2.png") no-repeat; font-weight: bold; font: 12px/18px tahoma,verdana,helvetica,sans-serif; text-align:left; padding: 0px 0 0 42px;}
+.mshopisprod div {color:grey; padding:6px 0 6px 10px; background:-moz-linear-gradient(center top , #F6FAFF 0%, rgba(255, 255, 255, 0.01), #DAF3FD 98%, #479AC6 100%) repeat scroll 0 0 transparent;}
+.mshopis3 {font-family:tahoma,verdana,helvetica,sans-serif; font-size:12px; color:grey; text-align:left; margin: 3px;}
+.mshopis5 {font-family:tahoma,verdana,helvetica,sans-serif; font-size:8px; color:grey; font-weight:bold;}
+.mshimgopis {text-align:center; vertical-align: middle; height: 301px; width: 267px;}
+.mshopisbold {font-size:14px; color:black; font-weight:bold;}
+.mshimgopis2 {padding-top:12px; text-align:center; vertical-align: middle; cursor: pointer;}
+
+.mshmenu  {margin:0; height:44px; background: white url(mshtb1.png) repeat-x top left;}
+.mshmenu a {color:white; text-decoration: none; font-weight: bold; font: 12px/16px tahoma,verdana,helvetica,sans-serif;}
+.mshmenu div {color:white;}
+.mshbaner {height:250px; color:#666666; font-size:42px; font-family: Trebuchet MS,Arial,Helvetica,sans-serif; background:#f1f6fa;}
+
+.mshkompkoszyk {margin:0;  background: #f1f6fa; font-family:tahoma,verdana,helvetica,sans-serif; font-size:12px; color:#313D50;}
+.mshkompkoszyk h1 {background: url("mshtb2.png") no-repeat; color:white; margin-top: 0px; padding: 0px 0 0 42px; font-weight: bold; font: 12px/18px tahoma,verdana,helvetica,sans-serif;}
+.mshkompkoszyk div {margin: 12px 0 0 12px;}
+
+.mshkompopis {vertical-align:top; margin: 0; height:350px; text-align:center; font: 12px/16px tahoma,verdana,helvetica,sans-serif; border-color:#929090 #DCDEE1 #DCDEE1 #929090; border-style:solid; border-width:2px;}
+.mshkompopis div {margin: 6px 0px 6px 0px;}
+.mshkompopis h1 {font-size:13px; font-weight:bold; color:#313D50; margin: 6px 0px 6px 0px;}
+.mshkompopis h2 {font-size:12px; font-weight:normal; color:#313D50; margin: 0; padding:0;}
+.mshkompimg {height: 140px;}
+
+.mshico {float:left; margin: 0 6px 0 0;}
+.mshgrupa {background: url(mshpkt.png) no-repeat top left; padding-left:16px; font-size:14px; }
+.mshgrupa[mshset="on"] {font-size:19px;}
+.mshgrupa[mshset="off"] {font-size:12px;}
+
+.mshinput {border-color:#929090 #DCDEE1 #DCDEE1 #929090; border-style:solid; border-width:1px;
+           padding:2px 5px;
+           width:57px;
+           margin: 0 0px 0 0px;
+           font-family:tahoma,verdana,helvetica,sans-serif; font-size:11px;
+           background-color: blue transparent;
+           display:block; overflow:hidden; display: inline;}
+.mshszukaj {border-color:#929090 #DCDEE1 #DCDEE1 #929090; border-style:solid; border-width:1px; margin:10px 0 20px 0px;}
