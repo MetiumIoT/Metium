@@ -1,0 +1,8 @@
+./irsstop
+rm ./irsmadar.1
+mv ./irsmadar ./rcpmadar.1
+wget http://emadar.eu/demo/irsmadar
+chmod a+x ./irsmadar
+./irsstart
+echo done
+#./irsmadar

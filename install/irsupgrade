@@ -1,0 +1,7 @@
+#!/bin/bash
+cd /opt/madar
+rm ./irsmadar.1
+mv ./irsmadar ./irsmadar.1
+cp /root/fpc/irs/irsmadar /opt/madar/irsmadar
+#wget http://emadar.eu/demo/irsmadar
+chmod a+x ./irsmadar

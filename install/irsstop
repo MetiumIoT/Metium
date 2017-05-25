@@ -1,0 +1,6 @@
+echo "kill irsmadar $(date)" >> /bat/mob.log
+pid=`ps ax | awk '($5 ~ /irsmadar/) { print $1}'`
+echo $pid
+kill -15 $pid
+sleep 5
+kill -9 $pid

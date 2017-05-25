@@ -1,0 +1,5 @@
+#!/bin/bash
+cd /opt/madar/
+echo "start irsmadar $(date)" >> /bat/mob.log
+./irsmadar -d  PORT 80  >> irsmob.log
+

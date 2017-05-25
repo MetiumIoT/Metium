@@ -1,0 +1,20 @@
+#!/bin/bash
+
+UUU=$1
+
+source dane
+
+
+if [ "$1" != "" ]; then 
+    echo kill $UUU
+    echo kill $UUU $(date) >> $LOG
+    echo kill $UUU $(date) >> $MLOG
+    pid=`ps ax | awk '($6 ~ /name_'$UUU'/) { print $1 }'`
+    echo $pid
+    kill -15 $pid
+    sleep 1
+    kill -9 $pid
+    exit 0
+else 
+    echo "podaj parametr !!!"
+fi

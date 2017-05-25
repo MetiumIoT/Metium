@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /bat
+echo "start irswatchdog $(date)" >> mwatchdog.log
+./mwatchdog  80  

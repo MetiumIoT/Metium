@@ -1,0 +1,20 @@
+#!/bin/bash
+
+UUU=mobile
+
+PORT=6002
+
+if ! [[ "$PORT" =~ ^[0-9]+$ ]] ; then
+  echo "bad port"
+  exit 2
+fi
+
+
+source dane
+
+echo "mobile start $UUU $(date)" >> $LOG
+echo test $UUU 
+echo -u $UUU $sciezka_bat/mobile_start__ $UUU $PORT 
+sudo -u $UUU $sciezka_bat/mobile_start__ $UUU $PORT >> $LOG
+
+sudo -u $UUU $sciezka_bat/mobile_start2__ $UUU 6001 >> $LOG

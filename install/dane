@@ -1,0 +1,15 @@
+LOG=/bat/mobile.log
+MLOG=/bat/mdoglog.log
+ALOG=/bat/mobarch.log
+
+sciezka_arch=/export
+sciezka_bat=/bat
+sciezka_cert=/bat
+sciezka_mobile=/opt/madar
+sciezka_program=/opt/madar
+
+sciezka=/opt
+
+program=irsmobile
+program2=madarmobile
+

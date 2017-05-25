@@ -1,0 +1,6 @@
+#!/bin/bash
+UUU=mobile
+
+source dane
+echo mobile_stop $UUU $(date) >> $LOG
+sudo  $sciezka_bat/mobile_stop__ $UUU >> $LOG

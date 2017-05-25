@@ -1,0 +1,15 @@
+#!/bin/bash
+
+UUU=$1
+PORT=$2
+
+source dane
+
+
+umask 027
+cd $sciezka/$UUU
+
+echo start $sciezka/$UUU $(date) >> $LOG
+$sciezka/$program -name_$UUU -ssl  -d PORT $PORT >> mob.log  && echo start $UUU:$PORT: __  $(date)
+
+
