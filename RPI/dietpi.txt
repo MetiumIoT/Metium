@@ -27,7 +27,7 @@ AUTO_SETUP_NET_STATIC_GATEWAY=192.168.0.1
 AUTO_SETUP_NET_STATIC_DNS=8.8.8.8
 
 #    Hostname
-AUTO_SETUP_NET_HOSTNAME=DietPi
+AUTO_SETUP_NET_HOSTNAME=settings_test
 
 #    Force ethernet speeds
 #        NB: This is mainly aimed at Pine A64's which may have an HW issue that causes unstable 1Gbit link.
@@ -38,7 +38,7 @@ AUTO_SETUP_NET_ETH_FORCE_SPEED=0
 
 #    Size of swapfile to generate (MB)
 #        0=Disabled | 1=auto (2GB-RAM = size) | 2+=manual
-AUTO_SETUP_SWAPFILE_SIZE=1
+AUTO_SETUP_SWAPFILE_SIZE=1072
 #        Optional swapfile location
 AUTO_SETUP_SWAPFILE_LOCATION=/var/swap
 
@@ -50,7 +50,7 @@ AUTO_UNMASK_LOGIND=0
 #    Fully automate the installation
 #        1=Automated installation with no user inputs.
 #        It is HIGHLY recommended to also set CONFIG_BOOT_WAIT_FOR_NETWORK=2, to force infinite wait for network connection during boot, preventing no connection errors due to timeout.
-AUTO_SETUP_AUTOMATED=0
+AUTO_SETUP_AUTOMATED=1
 
 #    Global Password to be applied for the system
 #        Requires AUTO_SETUP_AUTOMATED=1
@@ -58,13 +58,16 @@ AUTO_SETUP_AUTOMATED=0
 #        eg: MySQL, Transmission, Deluge etc.
 #        WARN: Passwords with the any of the following characters are not supported: \"$
 #        WARN: Do NOT change this entry after 1st run setup of DietPi has been completed. It is always scraped by dietpi-software.
-AUTO_SETUP_GLOBAL_PASSWORD=dietpi
+AUTO_SETUP_GLOBAL_PASSWORD=Password has been encrypted and secured on rootFS
 
 #    DietPi-Software to automatically install. | requires AUTO_SETUP_AUTOMATED=1
 #    For a list of software index's (ID's), run '/DietPi/dietpi/dietpi-software list'
 #    No limit on number entries, add as many as you need and uncomment the line.
 #    DietPi will automatically install all pre-reqs (eg: ALSA/XSERVER for desktops etc)
 #    - Examples:
+AUTO_SETUP_INSTALL_SOFTWARE_ID=3 #mc: midnight commander, powerful file manager
+AUTO_SETUP_INSTALL_SOFTWARE_ID=97 #openvpn: vpn server +rsyslog | http://dietpi.com/phpbb/viewtopic.php?f=8&t=5&p=613#p613
+
 #AUTO_SETUP_INSTALL_SOFTWARE_ID=23    #will install Desktop LXDE
 #AUTO_SETUP_INSTALL_SOFTWARE_ID=74    #will install LAMP webserver stack
 #AUTO_SETUP_INSTALL_SOFTWARE_ID=44    #will install Bittorrent transmission
@@ -74,7 +77,7 @@ AUTO_SETUP_GLOBAL_PASSWORD=dietpi
 #        0=none
 #        -1=dropbear
 #        -2=opensshserver
-AUTO_SETUP_SSH_SERVER_INDEX=-1
+AUTO_SETUP_SSH_SERVER_INDEX=-2
 
 #    File Server Selection:
 #        0=none/manual
@@ -105,7 +108,7 @@ AUTO_SETUP_AUTOSTART_TARGET_INDEX=0
 
 #    Language/Regional settings | Requires AUTO_SETUP_AUTOMATED=1
 #        Timezone eg: Europe/London America/New_York | Full list (TZ*): https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-AUTO_SETUP_TIMEZONE=Europe/London
+AUTO_SETUP_TIMEZONE=Europe/Warsaw
 #        Locale eg: en_GB.UTF-8 / en_US.UTF-8 etc. One entry ONLY.
 AUTO_SETUP_LOCALE=en_GB.UTF-8
 #        Keyboard Layout eg: gb us de fr
@@ -121,7 +124,7 @@ AUTO_SETUP_KEYBOARD_LAYOUT=gb
 #        Option 1 = Copy your script to /boot/Automation_Custom_Script.sh and it will be executed automatically.
 #        Option 2 = Host your script online, then use AUTO_SETUP_CUSTOM_SCRIPT_EXEC=http://myweb.com/myscript.sh , it will be downloaded and executed automatically. | 0=disabled
 #        NB: Executed script log /var/tmp/dietpi/logs/dietpi-automation_custom_script.log
-AUTO_SETUP_CUSTOM_SCRIPT_EXEC=0
+AUTO_SETUP_CUSTOM_SCRIPT_EXEC=1
 
 #Disable HDMI (and GPU/VPU where supported) output for supported devices:
 #	RPi | Odroid C1 | Odroid C2
@@ -155,7 +158,6 @@ CONFIG_CPU_ONDEMAND_SAMPLE_DOWNFACTOR=80
 
 #Proxy settings | System-wide proxy settings. Use dietpi-config > networking options to apply.
 #    NB: Do not modify, you must use dietpi-config to configure/set options
-CONFIG_PROXY_ENABLED=0
 CONFIG_PROXY_ADDRESS=MyProxyServer.com
 CONFIG_PROXY_PORT=8080
 CONFIG_PROXY_USERNAME=
@@ -176,7 +178,7 @@ CONFIG_NTP_MODE=2
 CONFIG_WIFI_COUNTRY_CODE=GB
 
 #Serial Console: Set to 0 if you do not require serial console.
-CONFIG_SERIAL_CONSOLE_ENABLE=1
+CONFIG_SERIAL_CONSOLE_ENABLE=0
 
 #Soundcard
 CONFIG_SOUNDCARD=none
@@ -254,3 +256,5 @@ DEV_GITOWNER=MichaIng
 # D I E T - P I
 # Settings, automatically added by dietpi-update
 #------------------------------------------------------------------------------------------------------
+CONFIG_G_CHECK_URL_TIMEOUT=5
+CONFIG_G_CHECK_URL_ATTEMPTS=3

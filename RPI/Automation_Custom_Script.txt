@@ -1,0 +1,133 @@
+
+#!/bin/bash
+
+
+### Tworzenie skryptow uruchamiajacych
+mkdir /opt/metium/
+mkdir /bat
+
+#root@Wibro:/bat# cat irsrestart 
+echo "#!/bin/bash
+/bat/mwatchdog kill
+/bat/irsstop
+cd /opt/metium/
+echo \"restart irsmadar $(date)\" >> /bat/mob.log
+./irsmadar -d -stm1k -debug PORT 80  >> irsmob.log
+/bat/irswatchdog" > /bat/irsrestart
+
+#root@Wibro:/bat# cat irsstart 
+echo "#!/bin/bash
+if [ ! -L /dev/ttyAMA0 ]; then
+        echo \"ok\"
+#        ln -s -T /dev/ttyS1 /dev/ttyAMA0
+fi
+cd /opt/metium/
+echo \"start irsmadar $(date)\" >> /bat/irs.log
+./irsmadar -d -stm1k -debug PORT 80 >> irsmob.log" > /bat/irsstart
+
+
+#root@Wibro:/bat# cat irsstop 
+echo "#!/bin/bash
+echo \"kill irsmadar $(date)\" >> /bat/irs.log
+pid=`ps ax | awk '($5 ~ /irsmadar/) { print $1}'`
+echo $pid
+kill -15 $pid
+sleep 5
+kill -9 $pid" > /bat/irsstop
+
+#root@Wibro:/bat# cat irswatchdog
+echo "#!/bin/bash
+cd /bat
+echo \"start irswatchdog $(date)\" >> irs.log
+./mwatchdog  80" > /bat/irswatchdog
+
+
+#root@Wibro:/bat# cat mwatchdog
+echo "#!/bin/bash
+AAA=1
+if [ \"$1\" =  \"kill\" ]; then
+ echo \"kill\"
+ pid=`ps ax | awk '(($6 ~ /mwatchdog/)  && ($7 != "kill") ) { print $1 }'`
+ echo $pid
+ kill -9 $pid 
+ exit 1
+fi
+ 
+if [ \"x$2\" != \"x--\" ]; then
+echo \"start watchdog $1 $(date)\" >>/bat/mwatchdog.log
+$0 $1 -- 1>>/bat/mwatchdog.log  2>/dev/null &
+exit 0
+fi
+
+while [ $AAA -eq 1 ]; 
+  do
+   echo start watchdog $1 $(date)
+  sleep 60
+  while [ $?  -eq 0 ];
+    do 
+      sleep 120
+      echo \"test watchdog $(date)\"
+      wget -q -t 1   -O - http://127.0.0.1:$1/favicon.ico >/dev/null
+    done
+    echo \"stop watchdog $? $(date)\"
+    /bat/irsstop
+    sleep 2
+    /bat/irsstart
+
+done" > /bat/mwatchdog
+
+#root@Wibro:/boot# cat /bat/irsupdate 
+echo "#!/bin/bash
+./irsstop
+cd /opt/metium
+rm ./irsmadar.1
+mv ./irsmadar ./irsmadar.1
+wget http://emadar.eu/demo/irsmadar
+chmod a+x ./irsmadar
+cd /bat
+#./irsstart
+echo done" > /bat/irsupdate
+
+#root@Wibro:/boot# cat /etc/rc.local 
+echo "#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will \"exit 0\" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+_IP=$(hostname -I) || true
+if [ \"$_IP\" ]; then
+  printf \"My IP address is %s\n\" \"$_IP\"
+fi
+/bat/irsrestart
+exit 0" > /etc/rc.local
+
+### uprawnienia do wykonywania
+for file in /bat/irs*
+do
+  chmod +x "$file"
+done
+chmod +x /bat/mwatchdog
+
+#sudo apt-get install autossh ssh
+
+## Run commands
+###instalacja metium
+/bat/irsstart
+### Instalacja openocd - programowanie przez RPI
+/boot/openocd_install.sh
+# uprawnienia wykonywalne dla skrypty
+## Dodatkowe pakiety do zainstalowania
+apt-get install net-tools zip minicom -y
+
+##Dodawanie aby uruchomić ssl
+ln -s /usr/lib/arm-linux-gnueabihf/libcrypto.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libcrypto.so
+ln -s /usr/lib/arm-linux-gnueabihf/libssl.so.1.0.0 /usr/lib/arm-linux-gnueabihf/libssl.so

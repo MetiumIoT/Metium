@@ -16,28 +16,27 @@
 
 # Set the following two settings to "1" to disable video output and framebuffer completely.
 # NB: This will lead to some error messages on boot, which can be safely ignored.
-#hdmi_ignore_hotplug=1
-#hdmi_ignore_composite=1
+#hdmi_ignore_hotplug=0
+#hdmi_ignore_composite=0
 
 # Uncomment to force a console size. By default it will be display's size minus overscan.
 #framebuffer_width=1280
 #framebuffer_height=720
-#framebuffer_depth=16
 
 # SDTV_MODES
 #sdtv_mode=0
 
 # Uncomment to force a specific HDMI mode (this will force VGA).
-#hdmi_group=1
-#hdmi_mode=1
+hdmi_group=2
+hdmi_mode=87
 
 # Uncomment to force an HDMI mode rather than DVI. This can make audio work in DMT (computer monitor) modes.
-#hdmi_drive=2
+hdmi_drive=1
 
 # Set "hdmi_blanking=1" to allow the display going into standby after 10 minutes without input.
 # With default value "0", the display shows a blank screen instead, but will not go into standby.
 # NB: With "1" some applications (e.g. Kodi, OMXPlayer) cannot prevent display standby due to missing DPMS signal.
-#hdmi_blanking=1
+#hdmi_blanking=0
 
 # Set to "1" if your display has a black border of unused pixels visible.
 disable_overscan=1
@@ -68,7 +67,7 @@ max_usb_current=1
 disable_splash=1
 
 #-------SoundCard-------
-dtparam=audio=on
+dtparam=audio=off
 
 #-------I²C-------------
 dtparam=i2c_arm=off
@@ -80,8 +79,9 @@ dtparam=spi=off
 
 #-------Serial/UART-----
 # NB: Enabled for 1st run only, if you want to keep this setting, please set CONFIG_SERIAL_CONSOLE_ENABLE=1 in /DietPi/dietpi.txt.
-# NB: "enable_uart=1" will forcefully set "core_freq=250" unless "force_turbo=1" is set as well.
+#core_freq=400
 enable_uart=1
+dtoverlay=pi3-disable-bt
 
 #-------Overclock-------
 temp_limit=65
@@ -90,12 +90,16 @@ temp_limit=65
 force_turbo=0
 
 #over_voltage=0
-#arm_freq=900
-#core_freq=250
-#sdram_freq=400
+#arm_freq=1200
+#core_freq=400
+#sdram_freq=450
 
 #arm_freq_min=700
 #core_freq_min=250
 #sdram_freq_min=400
 
 # Note To Self, NEVER enable L2 cache, breaks most X based applications that were not compiled with L2 cache enabled.
+temp_limit=75
+
+hdmi_cvt 800 480 60 6 0 0 0
+temp_limit=75
